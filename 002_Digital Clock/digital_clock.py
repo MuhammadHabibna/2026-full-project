@@ -1,6 +1,7 @@
 import tkinter as tk
 import time
 
+# Update
 def update_time():
     current_time = time.strftime('%H:%M:%S')
     clock_label.config(text=current_time)
