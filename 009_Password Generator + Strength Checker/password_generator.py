@@ -99,7 +99,7 @@ def main():
 
     console.print()
 
-    # Generating Animation
+    # Generating Animationn
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
