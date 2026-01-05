@@ -77,10 +77,13 @@ def laporan_visualisasi():
     
     plt.title('Distribusi Pengeluaran Saya', fontsize=16, fontweight='bold', pad=20)
     plt.axis('equal')
-    
-    print("\n[INFO] Menampilkan Pie Chart...\n")
     plt.tight_layout()
-    plt.show()
+    
+    chart_file = 'chart_pengeluaran.png'
+    plt.savefig(chart_file, dpi=100, bbox_inches='tight')
+    plt.close()
+    
+    print(f"\n[SUCCESS] Chart berhasil dibuat: {chart_file}\n")
 
 def main():
     """Main program"""
