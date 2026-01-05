@@ -1,0 +1,30 @@
+[
+    {
+        "url": "https://python.org",
+        "title": "Python Official",
+        "tags": [
+            "coding",
+            "python",
+            "official"
+        ],
+        "date": "2024-01-01 12:00"
+    },
+    {
+        "url": "https://youtube.com",
+        "title": "Tutorial Python",
+        "tags": [
+            "video",
+            "tutorial",
+            "coding"
+        ],
+        "date": "2024-01-02 12:00"
+    },
+    {
+        "url": "https://youtu.be/zt0JA5rxdfM?si=KK_us87alF5Ria12",
+        "title": "AI Trends 2026",
+        "tags": [
+            "coding"
+        ],
+        "date": "2026-01-06 06:21"
+    }
+]
