@@ -5,6 +5,13 @@ from rich.console import Console
 from rich.prompt import Confirm, Prompt
 from rich.panel import Panel
 from rich.text import Text
+import sys
+import io
+
+# Force UTF-8 on Windows
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # Initialize Console
 console = Console()
