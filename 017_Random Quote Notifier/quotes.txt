@@ -1,0 +1,10 @@
+"The only way to do great work is to love what you do." - Steve Jobs
+"Simplicity is the soul of efficiency." - Austin Freeman
+"Code is like humor. When you have to explain it, it’s bad." - Cory House
+"Fix the cause, not the symptom." - Steve Maguire
+"Optimism is an occupational hazard of programming." - Kent Beck
+"Make it work, make it right, make it fast." - Kent Beck
+"Talk is cheap. Show me the code." - Linus Torvalds
+"Stay hungry, stay foolish." - Steve Jobs
+"It’s not a bug, it’s an undocumented feature." - Anonymous
+"First, solve the problem. Then, write the code." - John Johnson
