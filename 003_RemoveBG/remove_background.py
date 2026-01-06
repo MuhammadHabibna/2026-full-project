@@ -7,7 +7,7 @@ import sys
 
 def remove_background(input_path, output_path=None):
     try:
-        # Validasi file inputt
+        # Validasi file inputtt
         if not os.path.exists(input_path):
             raise FileNotFoundError(f"File tidak ditemukan: {input_path}")
         
