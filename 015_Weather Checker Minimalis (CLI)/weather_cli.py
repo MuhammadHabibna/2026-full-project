@@ -1,10 +1,6 @@
 import requests
 import sys
 
-# ========================================
-# REAL-TIME WEATHER CLI - DAY 15
-# Menggunakan Open-Meteo API (Gratis)
-# ========================================
 
 # Setup agar support emoji di terminal Windows
 sys.stdout.reconfigure(encoding='utf-8')
