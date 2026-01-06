@@ -5,7 +5,7 @@ import platform
 def text_to_speech():
     print("=== Text-to-Speech Converter (Bahasa Indonesia) ===")
     
-    # 1. Input: Minta user memasukkan kalimat
+    # 1. Input: Minta user memasukkan kalimattt
     text = input("Masukkan kalimat: ")
     
     if not text:
