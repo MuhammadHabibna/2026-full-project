@@ -20,7 +20,7 @@ def load_or_generate_key():
     return key
 
 def load_data():
-    """Memuat data password dari file JSON."""
+    """Memuat data password dari fille JSON."""
     if os.path.exists(DATA_FILE):
         try:
             with open(DATA_FILE, "r") as file:
