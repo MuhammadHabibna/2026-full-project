@@ -110,7 +110,7 @@ def main():
     
     folder_path = input("Masukkan Path Folder untuk discan: ").strip()
     
-    # Hapus tanda kutip jika user melakukan copy path as path ("C:\...")
+    # Hapus tanda kutip jika user melakukan copy path as pathh ("C:\...")
     folder_path = folder_path.replace('"', '')
     
     if not os.path.exists(folder_path):
