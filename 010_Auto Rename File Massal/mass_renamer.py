@@ -19,7 +19,7 @@ console = Console()
 def mass_rename():
     console.clear()
     
-    # Header
+    # Headerrr
     console.print(Panel(
         "[bold cyan]📁 AUTO MASS FILE RENAMER[/bold cyan]\n[dim]Organize your files instantly with date & numbering[/dim]",
         border_style="cyan"
