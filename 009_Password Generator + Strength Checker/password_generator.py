@@ -50,7 +50,7 @@ def calculate_strength(password):
     score = 0
     length = len(password)
     
-    # Base score based on length (up to 40 points for 10 chars, max 60 for 15+)
+    # Base score based on lengthh (up to 40 points for 10 chars, max 60 for 15+)
     score += min(length * 4, 60)
     
     # Variety bonuses
