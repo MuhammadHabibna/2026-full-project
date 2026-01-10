@@ -1,0 +1,335 @@
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --card-border: #30363d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --accent: #238636; /* GitHub Green */
+    --accent-glow: rgba(35, 134, 54, 0.4);
+    --highlight: #58a6ff;
+    
+    --level-0: #161b22;
+    --level-1: #0e4429;
+    --level-2: #006d32;
+    --level-3: #26a641;
+    --level-4: #39d353;
+
+    --font-main: 'Outfit', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(88, 166, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(57, 211, 83, 0.05) 0%, transparent 20%);
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Header & Stats */
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.brand h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.brand .highlight {
+    background: linear-gradient(135deg, var(--highlight), var(--level-4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stats-overview {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: rgba(22, 27, 34, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    padding: 1rem;
+    border-radius: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: var(--highlight);
+    transform: translateY(-2px);
+}
+
+.stat-card .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Input Section */
+.input-group {
+    display: flex;
+    gap: 0.8rem;
+    background: var(--card-bg);
+    padding: 0.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+button#add-btn {
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+button#add-btn:hover {
+    background: var(--highlight);
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+}
+
+/* Habit List */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.date-badge {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background: var(--card-bg);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+}
+
+.habit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.habit-item {
+    background: rgba(22, 27, 34, 0.4);
+    border: 1px solid var(--card-border);
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+    cursor: pointer;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.habit-item:hover {
+    background: var(--card-bg);
+    border-color: var(--text-secondary);
+}
+
+.habit-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.habit-item.completed .checkbox {
+    background: var(--level-4);
+    border-color: var(--level-4);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.checkbox::after {
+    content: '✓';
+    color: var(--bg-color);
+    font-weight: 800;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: var(--transition);
+}
+
+.habit-item.completed .checkbox::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.habit-name {
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.habit-item.completed .habit-name {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--card-border);
+    cursor: pointer;
+    padding: 5px;
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    color: #ff5858;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    border: 1px dashed var(--card-border);
+    border-radius: 12px;
+}
+
+/* Heatmap */
+.heatmap-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(53, 1fr); /* Weeks in a year */
+    gap: 3px;
+    margin-top: 1rem;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.day-cell {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: var(--level-0);
+    transition: var(--transition);
+}
+
+.day-cell:hover {
+    transform: scale(1.5);
+    z-index: 10;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.level.level-0, .day-cell[data-level="0"] { background-color: var(--level-0); }
+.level.level-1, .day-cell[data-level="1"] { background-color: var(--level-1); }
+.level.level-2, .day-cell[data-level="2"] { background-color: var(--level-2); }
+.level.level-3, .day-cell[data-level="3"] { background-color: var(--level-3); }
+.level.level-4, .day-cell[data-level="4"] { background-color: var(--level-4); box-shadow: 0 0 5px var(--accent-glow); }
+
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    padding-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .heatmap-grid {
+        grid-template-columns: repeat(20, 1fr); /* Show fewer weeks on mobile */
+    }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 26: Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="brand">
+                <h1>Habit<span class="highlight">Forge</span></h1>
+                <p>Build better days, one pixel at a time.</p>
+            </div>
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <span class="label">Current Streak</span>
+                    <span class="value" id="current-streak">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">Total Active Days</span>
+                    <span class="value" id="total-days">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">Completion Rate</span>
+                    <span class="value" id="completion-rate">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="habit-input-section">
+                <div class="input-group">
+                    <input type="text" id="habit-input" placeholder="What habit do you want to build?" autocomplete="off">
+                    <button id="add-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Add
+                    </button>
+                </div>
+            </section>
+
+            <section class="today-habits">
+                <div class="section-header">
+                    <h2>Today's Focus</h2>
+                    <span class="date-badge" id="current-date">Jan 10, 2026</span>
+                </div>
+                <div class="habit-list" id="habit-list">
+                    <!-- Habits will be injected here -->
+                    <div class="empty-state">
+                        <p>No habits yet. Start simple!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="heatmap-section">
+                <div class="section-header">
+                    <h2>Consistency Map</h2>
+                    <div class="legend">
+                        <span>Less</span>
+                        <div class="level level-0"></div>
+                        <div class="level level-1"></div>
+                        <div class="level level-2"></div>
+                        <div class="level level-3"></div>
+                        <div class="level level-4"></div>
+                        <span>More</span>
+                    </div>
+                </div>
+                <div class="calendar-scroll">
+                    <div class="heatmap-grid" id="heatmap-grid">
+                        <!-- Heatmap cells injected here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Day 26 • AntiGravity 365 Days</p>
+        </footer>
+    </div>
+    
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
