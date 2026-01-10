@@ -1,0 +1,339 @@
+:root {
+    --bg-color: #0f0c29;
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --primary-color: #00fff2;
+    --secondary-color: #ff00de;
+    --text-main: #e0e0e0;
+    --text-sub: #6c757d;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --correct-color: #ffffff;
+    --incorrect-color: #ff4c4c;
+    --extra-color: #7e2a33;
+    --caret-color: #00fff2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+}
+
+.timer-container {
+    font-size: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary-color);
+}
+
+.config {
+    display: flex;
+    gap: 1rem;
+    background: var(--glass-bg);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.config-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-sub);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.config-btn:hover,
+.config-btn.active {
+    color: var(--primary-color);
+}
+
+/* Game Area */
+.game-wrapper {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.stats-live {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item .label {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.stat-item .value {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.typing-area {
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    height: 140px;
+    /* Specific height to show ~3 lines */
+    overflow: hidden;
+    user-select: none;
+    cursor: text;
+}
+
+.words {
+    color: var(--text-sub);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    transition: margin-top 0.2s ease;
+}
+
+.word {
+    margin-right: 12px;
+    position: relative;
+}
+
+.letter {
+    position: relative;
+    transition: color 0.1s ease;
+}
+
+.letter.correct {
+    color: var(--correct-color);
+}
+
+.letter.incorrect {
+    color: var(--incorrect-color);
+}
+
+.letter.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--caret-color);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Specific cursor implementation */
+.cursor {
+    display: none;
+    /* We use .active class on letter approach or separate cursor div */
+    position: absolute;
+    width: 2px;
+    height: 1.5rem;
+    background: var(--caret-color);
+    transition: all 0.1s ease;
+    z-index: 10;
+}
+
+#hidden-input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Cover area to catch clicks */
+    height: 100%;
+    z-index: 5;
+    cursor: default;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.typing-area.blurred .overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.helper-text {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+kbd {
+    background: var(--glass-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal {
+    background: #1a1a2e;
+    /* Solid dark/blue */
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 255, 242, 0.2);
+}
+
+.modal-overlay.show .modal {
+    transform: translateY(0);
+}
+
+.modal h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.result-card.main {
+    grid-column: span 2;
+    background: rgba(0, 255, 242, 0.1);
+}
+
+.result-card .label {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 0.5rem;
+}
+
+.result-card .value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-main);
+}
+
+.result-card.main .value {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 242, 0.4);
+}

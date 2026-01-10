@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS Countdown Overlay</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Timer Display -->
+        <div id="timer-display">00:00:00</div>
+
+        <!-- Controls (Bisa di-hide buat OBS) -->
+        <div class="controls" id="controls-panel">
+            <div class="input-group">
+                <input type="number" id="input-h" placeholder="00" min="0" max="99">
+                <span>:</span>
+                <input type="number" id="input-m" placeholder="10" min="0" max="59">
+                <span>:</span>
+                <input type="number" id="input-s" placeholder="00" min="0" max="59">
+            </div>
+
+            <div class="buttons">
+                <button id="btn-start" class="btn start">Start</button>
+                <button id="btn-pause" class="btn pause" disabled>Pause</button>
+                <button id="btn-reset" class="btn reset">Ganti</button>
+            </div>
+
+            <div class="extra-options">
+                <button id="btn-toggle-bg" class="btn-small">Toggle BG (Green/Clear)</button>
+                <button id="btn-hide-ui" class="btn-small">Hide Controls</button>
+            </div>
+            <p class="hint">Double click anywhere to show controls again.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

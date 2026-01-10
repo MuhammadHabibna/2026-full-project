@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonType | Ultimate Speed Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">NeonType</div>
+            <div class="timer-container">
+                <span id="time">60</span>s
+            </div>
+            <div class="config">
+                <button class="config-btn active" data-time="60">60s</button>
+                <button class="config-btn" data-time="30">30s</button>
+                <button class="config-btn" data-time="15">15s</button>
+            </div>
+        </header>
+
+        <div class="game-wrapper">
+            <div class="stats-live">
+                <div class="stat-item">
+                    <span class="label">WPM</span>
+                    <span class="value" id="live-wpm">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Accuracy</span>
+                    <span class="value" id="live-acc">100%</span>
+                </div>
+            </div>
+
+            <div class="typing-area" id="typing-area">
+                <div class="words" id="words"></div>
+                <div class="cursor" id="cursor"></div>
+                <!-- Hidden input to capture keystrokes anywhere -->
+                <input type="text" id="hidden-input" autocomplete="off" autocapitalize="off" spellcheck="false">
+
+                <div class="overlay" id="focus-overlay">
+                    <div class="text">Click or Press Any Key to Focus</div>
+                </div>
+            </div>
+
+            <div class="helper-text">
+                <kbd>Tab</kbd> to restart
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="results-modal">
+        <div class="modal">
+            <h2>Time's Up!</h2>
+            <div class="result-grid">
+                <div class="result-card main">
+                    <div class="label">WPM</div>
+                    <div class="value" id="final-wpm">0</div>
+                </div>
+                <div class="result-card">
+                    <div class="label">Accuracy</div>
+                    <div class="value" id="final-acc">0%</div>
+                </div>
+                <div class="result-card">
+                    <div class="label">Raw Characters</div>
+                    <div class="value" id="final-raw">0</div>
+                </div>
+                <div class="result-card">
+                    <div class="label">Errors</div>
+                    <div class="value" id="final-error">0</div>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn-primary" onclick="initGame()">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
